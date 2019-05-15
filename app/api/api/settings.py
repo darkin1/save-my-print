@@ -25,7 +25,7 @@ SECRET_KEY = 'j!w5e3g-gy!5lhhtyp+yyxwkib-^jum7p^6_@l70+og@vc+wu@'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['backend.savemyprint.local']
+ALLOWED_HOSTS = ['app.savemyprint.local']
 
 AUTH_USER_MODEL = 'users.CustomUser'
 
