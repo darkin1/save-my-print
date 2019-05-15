@@ -20,6 +20,7 @@ RUN addgroup -S ${GROUP} -g ${GROUP_ID} \
 COPY requirements.txt /
 RUN mkdir /app
 WORKDIR /app
+RUN apk update && apk add postgresql-dev gcc python3-dev musl-dev
 RUN pip install --no-cache-dir -r /requirements.txt
 
 COPY . /app/
