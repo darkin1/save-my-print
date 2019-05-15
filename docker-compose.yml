@@ -1,0 +1,72 @@
+version: '3.4'
+services:
+    db:
+        build: postgresql
+        container_name: ${PROJECT}_${ENV}_db
+        ports:
+           - ${IP}:5432:5432
+        environment:
+            - SQL_ENGINE=django.db.backends.postgresql
+            - POSTGRES_MULTIPLE_DATABASES=${DB_NAME}
+            - POSTGRES_DATABASE=savemyprint_db
+            - POSTGRES_USER=${DB_USER}
+            - POSTGRES_PASSWORD=${DB_PASSWORD}
+            - PGDATA=/var/lib/postgresql/data/pgdata
+        volumes:
+            - postgres-savemyprint:/var/lib/postgresql/data
+        restart: on-failure:5
+        logging:
+            driver: json-file
+        networks:
+            - network
+
+    python:
+        build: python 
+        command: sh -c "python manage.py makemigrations && python manage.py migrate && gunicorn api.wsgi -b 0.0.0.0:8000 --reload --workers 3 -t 3600"
+        stdin_open: true
+        tty: true
+        ports: 
+            - 3000:3000
+        volumes:
+            - ./app:/app
+        container_name: ${PROJECT}_${ENV}_python
+        working_dir: /app/api
+        links:
+            - db
+        logging:
+            driver: json-file
+        networks:
+            - network
+        environment:
+            APP_ENV: ${ENV}
+
+    web:
+        build: nginx
+        container_name: ${PROJECT}_${ENV}_web
+        ports:
+           - ${IP}:80:80
+        environment:
+            VIRTUAL_HOST: ${VIRTUAL_HOST}
+        volumes:
+            - ./vhosts/:/etc/nginx/conf.d/
+            - ./app/:/app
+        links:
+            - python 
+        working_dir: /app/api
+        restart: on-failure:5
+        logging:
+            driver: json-file
+        networks:
+            - network
+    
+volumes:
+    postgres-savemyprint:
+        name: postgres-${PROJECT}-${ENV}
+        external: true
+    composer-cache:
+        external: true
+
+networks:
+    network:
+        external:
+            name: haproxy_network
