@@ -4,7 +4,7 @@ services:
         build: postgresql
         container_name: ${PROJECT}_${ENV}_db
         ports:
-           - ${IP}:5432:5432
+           - 5432:5432
         environment:
             - SQL_ENGINE=django.db.backends.postgresql
             - POSTGRES_MULTIPLE_DATABASES=${DB_NAME}
