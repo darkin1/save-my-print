@@ -27,6 +27,7 @@ DEBUG = True
 
 ALLOWED_HOSTS = ['backend.savemyprint.local']
 
+AUTH_USER_MODEL = 'users.CustomUser'
 
 # Application definition
 
@@ -37,6 +38,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'users.apps.UsersConfig',
     'rest_framework',
 ]
 
@@ -75,9 +77,17 @@ WSGI_APPLICATION = 'api.wsgi.application'
 # https://docs.djangoproject.com/en/2.2/ref/settings/#databases
 
 DATABASES = {
+    # 'default': {
+    #     'ENGINE': 'django.db.backends.sqlite3',
+    #     'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+    # }
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        'ENGINE' : 'django.db.backends.postgresql',
+        'NAME': 'savemyprint_db',
+        'USER' : 'savemyprint',
+        'PASSWORD': 'H48hSRk2xkXLyGpx',
+        'HOST': 'db',
+        'PORT': '5432',
     }
 }
 
