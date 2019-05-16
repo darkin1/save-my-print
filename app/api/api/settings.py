@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     'users.apps.UsersConfig',
     'rest_framework',
     'django_hosts',
+    'landing',
 ]
 
 MIDDLEWARE = [

@@ -1,8 +1,9 @@
 from django.shortcuts import render
 from django.http import HttpResponse
+from django.template import loader
 
 def show(request):
-    return HttpResponse("Hello, world. You're at the polls index.")
+    return render(request, 'landing/show.html', context = {})
     
 def form(request):
     return HttpResponse("This is form")
