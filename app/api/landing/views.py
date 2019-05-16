@@ -1,7 +1,8 @@
 from django.shortcuts import render
-from rest_framework.response import Response
-from rest_framework.decorators import api_view
+from django.http import HttpResponse
 
-@api_view(['GET'])
 def show(request):
-   return Response({'message' : 'this is landing'}) 
+    return HttpResponse("Hello, world. You're at the polls index.")
+    
+def form(request):
+    return HttpResponse("This is form")
