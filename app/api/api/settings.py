@@ -25,7 +25,7 @@ SECRET_KEY = 'j!w5e3g-gy!5lhhtyp+yyxwkib-^jum7p^6_@l70+og@vc+wu@'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['app.savemyprint.local']
+ALLOWED_HOSTS = ['www.savemyprint.local', 'api.savemyprint.local']
 
 AUTH_USER_MODEL = 'users.CustomUser'
 
@@ -40,9 +40,11 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'users.apps.UsersConfig',
     'rest_framework',
+    'django_hosts',
 ]
 
 MIDDLEWARE = [
+    'django_hosts.middleware.HostsRequestMiddleware',
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -50,9 +52,13 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'django_hosts.middleware.HostsResponseMiddleware',
 ]
 
 ROOT_URLCONF = 'api.urls'
+
+ROOT_HOSTCONF = 'api.hosts'
+DEFAULT_HOST = 'api'
 
 TEMPLATES = [
     {
