@@ -25,7 +25,7 @@ SECRET_KEY = 'j!w5e3g-gy!5lhhtyp+yyxwkib-^jum7p^6_@l70+og@vc+wu@'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['app.savemyprint.local', 'newsletter.savemyprint.local', 'api.savemyprint']
+ALLOWED_HOSTS = ['www.savemyprint.local', 'api.savemyprint.local']
 
 AUTH_USER_MODEL = 'users.CustomUser'
 
@@ -58,7 +58,7 @@ MIDDLEWARE = [
 ROOT_URLCONF = 'api.urls'
 
 ROOT_HOSTCONF = 'api.hosts'
-DEFAULT_HOST = 'newsletter'
+DEFAULT_HOST = 'api'
 
 TEMPLATES = [
     {
