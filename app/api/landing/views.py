@@ -11,5 +11,8 @@ def privacy(request):
 def terms(request):
     return render(request, 'landing/terms.html', context = {})
 
+def assets(request):
+    return render(request, 'landing/assets.html', context = {})
+
 def form(request):
     return HttpResponse("This is form")
