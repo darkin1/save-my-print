@@ -3,5 +3,7 @@ from . import views
 
 urlpatterns = [
     url(r'landing/form', views.form),
+    url(r'privacy', views.privacy),
+    url(r'terms', views.terms),
     url(r'', views.show),
 ]
