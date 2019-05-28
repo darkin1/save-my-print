@@ -229,13 +229,18 @@
 		<div class="h-1 mx-auto bg-white w-1/6 opacity-25 my-0 py-0 rounded-t"></div>
 	</div>
 
-	<h3 class="my-4 text-3xl leading-tight">Subscribe to our newsletter and stay up to date with all product updates</h3>	
+	<h3 class="my-4 text-3xl leading-tight">Subscribe to our newsletter and stay up to date with product updates</h3>	
 	<div class="mx-auto w-full md:w-1/2 p-6 flex flex-col flex-grow flex-shrink">
-		<input class="text-gray-700 bg-white focus:outline-0 focus:shadow-outline border border-gray-300 rounded-lg py-2 px-4 block w-full appearance-none leading-normal" type="email" placeholder="jane@example.com">
+		<input id="subscribe-input" class="text-gray-700 bg-white focus:outline-0 focus:shadow-outline border border-gray-300 rounded-lg py-2 px-4 block w-full appearance-none leading-normal" type="email" placeholder="jane@example.com">
+		<p id="subscribe-notify" class="text-xl text-left leading-normal mt-4 text-gray-800"></p>
+		<p class="text-left mb-2">Marketing Permissions, please select all the ways you would like to hear from it:</p>
+		<label class="text-left cursor-pointer" for="subscribe-gdpr"><input id="subscribe-gdpr" class="h-5 w-5 align-middle" name="subscribe-gdpr" type="checkbox"><span class="ml-2">Email</span></label>
 	</div>
 
-	<button class="mx-auto lg:mx-0 hover:underline bg-white text-gray-800 font-bold rounded-full my-6 py-4 px-8 shadow-lg">Subscribe</button>
+	<button id="subscribe-btn" class="mx-auto lg:mx-0 mt-0 hover:underline bg-white text-gray-800 font-bold rounded-full my-6 py-4 px-8 shadow-lg">Subscribe</button>
 		
+		<p>You can unsubscribe at any time by clicking the link in the footer of our emails. For information about our privacy practices, please visit our website.</p>
+		<p>We use Mailchimp as our marketing platform. By clicking below to subscribe, you acknowledge that your information will be transferred to Mailchimp for processing. <a target="_blank" href="https://mailchimp.com/legal/">Learn more about Mailchimp's privacy practices here.</a></p>
 </section>
 
 {% endblock content %}

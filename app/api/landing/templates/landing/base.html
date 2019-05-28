@@ -262,28 +262,47 @@ $(document).ready(function() {
 	$("#image-upload").on("change", function (e) {
 			var file = $(this)[0].files[0];
 			var formData = new FormData();
-			// formData.append('aaa', 'bbbb');
 			formData.append('file', file);
 
-			console.log('change');
-			console.log(file);
-			console.log(formData);
-			
 			$.ajax({
 				type: "POST",
 				url: 'http://api.savemyprint.local/check_print/show',
 				data: formData,
-				// contentType: 'multipart/form-data', 
-				// mimeType: 'multipart/form-data',
-				// enctype: 'multipart/form-data',
 				contentType: false,
-				// dataType: 'json',
 				processData: false,
 				success: function(res) {
 					console.log('success', res);
 				},
 			});
 	});
+
+
+	$('button#subscribe-btn').click(function(){
+		let email = $('input#subscribe-input').val();
+		$('#subscribe-notify').text('');
+
+		if(!$('#subscribe-gdpr').is(':checked')) {
+			$('#subscribe-notify').text('Please confirm marketing permissions');
+
+			return;
+		}
+		
+		$.ajax({
+				type: "POST",
+				url: 'http://api.savemyprint.local/newsletter/save',
+				data: {'email': email},
+				// contentType: false,
+				// processData: false,
+				success: function(res) {
+					$('#subscribe-notify').text(res.message);
+					$('input#subscribe-input').val();
+				},
+				error: function(res) {
+					$('#subscribe-notify').text(res.responseJSON.message);
+					$('input#subscribe-input').val();
+				},
+			});
+	})
 });
 </script>
 

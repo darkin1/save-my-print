@@ -11,3 +11,4 @@ django-mailgun>=0.9.0,<=0.9.1
 django-cors-headers>=3.0.0,<=3.0.1
 django-hosts>=3.0
 pudb<=v2019.1
+mailchimp3<=3.0.7
