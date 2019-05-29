@@ -105,3 +105,28 @@ https://www.istockphoto.com/pl/search/more-like-this/1064350478?mediatype=illust
 https://www.vecteezy.com/free-vector/flat-icons-vector-collection
 https://www.shutterstock.com/pl/search?search_source=base_landing_page&searchterm=flat+icons+vector+collection+&image_type=all
 https://duckduckgo.com/?q=flat+icons+vector+collection+&atb=v127-2__&iar=images&iax=images&ia=images&iai=https%3A%2F%2Fthumbs.dreamstime.com%2Fz%2Fdata-analysis-flat-icons-collection-techniques-effective-business-management-market-research-collections-abstract-isolated-60155511.jpg
+
+
+Free:
+https://www.freepik.com/free-vector/3d-printing-horizontal-compositions_4300992.htm   - cały dom - wykorzystane
+<a href="https://www.freepik.com/free-photos-vectors/background">Background vector created by macrovector - www.freepik.com</a>
+
+https://www.iconfinder.com/icons/3427247/3d_printer_machine_model_print_printer_printing_icon
+https://pixabay.com/vectors/search/3d%20printer/
+https://www.freepik.com/free-vector/printer-3d-infographics_3949124.htm
+https://www.freepik.com/free-vector/printer-3d-flat-icons-set-modern-architecture-futuristic-building-process-isolated-vector-illustration_1158629.htm
+https://www.freepik.com/free-vector/3d-printing-data-center-icon-set_1228805.htm
+https://www.freepik.com/free-vector/prototyping-modeling-2x2-concept_2869872.htm
+https://www.freepik.com/free-vector/3d-printing-icons-set_4358644.htm
+https://www.freepik.com/free-vector/prototyping-modeling-set_4407873.htm
+https://www.freepik.com/free-vector/3d-printing-horizontal-banners_4358646.htm
+https://www.freepik.com/free-vector/prototyping-modeling-horizontal-banners_2869873.htm
+https://www.freepik.com/free-vector/3d-printing-2x2-design-concept_4358645.htm
+https://www.freepik.com/free-vector/3d-printing-orthogonal-flowchart_4300995.htm
+https://www.freepik.com/free-vector/3d-printing-technology_1098184.htm
+
+
+
+
+pro:
+https://www.vecteezy.com/free-vector/3d-printing?license-premium=true&from=mainsite&in_se=true
