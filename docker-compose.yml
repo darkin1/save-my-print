@@ -39,7 +39,19 @@ services:
             - network
         environment:
             APP_ENV: ${ENV}
-
+    
+    tensorflow-serving:
+        image: tensorflow/serving:latest
+        container_name: ${PROJECT}_${ENV}_tf_serving
+        volumes:
+            - ./models/tf_serving:/models/half_plus_two
+        ports: 
+            - 8500:8500
+            - 8501:8501
+        environment:
+            MODEL_NAME: "half_plus_two"
+            # MODEL_BASE_PATH: "/models/tf_serving"
+        
     web:
         build: nginx
         container_name: ${PROJECT}_${ENV}_web
