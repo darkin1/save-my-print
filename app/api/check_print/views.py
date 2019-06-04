@@ -84,9 +84,9 @@ def show(request):
         msg = 'Hard to say'
         folder = 'dont_know'
 
-   #  fs = FileSystemStorage(location='./../static/uploaded', file_permissions_mode=775)
-   #  filename = fs.save(file.name, file)
-   #  uploaded_file_url = fs.url(filename)
+    fs = FileSystemStorage(location='./../static/uploaded/' + folder, file_permissions_mode=775)
+    filename = fs.save(file.name, file)
+    uploaded_file_url = fs.url(filename)
 
     return Response({
         'message': 'Success',
