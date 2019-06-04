@@ -229,15 +229,16 @@ $(document).ready(function() {
     preview_box: "#image-preview",
 		label_field: "#image-label",
 		success_callback: function() {
-			console.log('callback');
-
     }
 	});
+	
+	let msg = $('#probability-msg');
 	
 	$("#image-upload").on("change", function (e) {
 			var file = $(this)[0].files[0];
 			var formData = new FormData();
 			formData.append('file', file);
+			msg.text('');
 
 			$.ajax({
 				type: "POST",
@@ -246,7 +247,7 @@ $(document).ready(function() {
 				contentType: false,
 				processData: false,
 				success: function(res) {
-					console.log('success', res);
+					msg.text(res.msg);
 				},
 			});
 	});

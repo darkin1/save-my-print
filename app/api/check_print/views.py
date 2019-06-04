@@ -9,7 +9,7 @@ import os
 import numpy as np
 import json
 import requests
-
+import time
 
 @api_view(['GET'])
 def image(request):
@@ -75,13 +75,13 @@ def show(request):
     predictions = round(predictions[0][0] * 100, 2)
 
     if predictions > 90:
-        msg = 'Seems to failed'
+        msg = 'Looks like it\'s broken ( ͡° ʖ̯ ͡°)'
         folder = 'failed'
     elif predictions < 1:
-        msg = 'Seems to be ok'
+        msg = 'Seems to be good (~‾▿‾)~'
         folder = 'good'
     else:
-        msg = 'Hard to say'
+        msg = 'Hard to say ¯\_(ツ)_/¯'
         folder = 'dont_know'
 
     fs = FileSystemStorage(location='./../static/uploaded/' + folder, file_permissions_mode=775)
@@ -93,5 +93,4 @@ def show(request):
         'probability': predictions,
         'res': serializer.data,
         'msg' : msg,
-      #   'uploaded_file_url': uploaded_file_url
     })
