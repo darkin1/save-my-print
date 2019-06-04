@@ -12,3 +12,6 @@ django-cors-headers>=3.0.0,<=3.0.1
 django-hosts>=3.0
 pudb<=v2019.1
 mailchimp3<=3.0.7
+numpy<=1.16.4
+cython<=0.29.9
+scikit-image<=0.17.0
