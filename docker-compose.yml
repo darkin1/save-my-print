@@ -26,8 +26,8 @@ services:
         volumes:
             - ./models/tf_serving:/models/half_plus_two
         ports:
-            - 8500:8500
-            - 8501:8501
+            - 127.0.0.1:8500:8500
+            - 127.0.0.1:8501:8501
         environment:
             MODEL_NAME: "half_plus_two"
             # MODEL_BASE_PATH: "/models/tf_serving"
