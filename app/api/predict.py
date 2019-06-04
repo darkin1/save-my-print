@@ -32,14 +32,14 @@ image = skimage.io.imread(os.path.join(path, img))
 image = resize(image, (IMG_SIZE, IMG_SIZE))
 
 # If grayscale. Convert to RGB for consistency.
-print(image.ndim)
+# print(image.ndim)
 # if image.ndim != 3:
 #     image = skimage.color.gray2rgb(image)
 
 # image = 1 - np.array(image).astype('float32') / 255.
 # image = image/255
-image = 1 - np.array(image).astype('float32')
-show_image(image)
+# image = 1 - np.array(image).astype('float32')
+# show_image(image)
 
 
 # data = json.dumps({"signature_name": "serving_default", "instances": image[0:3].tolist()})
@@ -52,3 +52,4 @@ json_response = requests.post('http://localhost:8501/v1/models/half_plus_two:pre
 predictions = json.loads(json_response.text)
 
 print(predictions)
+print(json_response)

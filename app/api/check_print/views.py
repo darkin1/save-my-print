@@ -30,7 +30,7 @@ def image(request):
    # img = 'BV-Acharya-9.jpg'
    # img = 'fused-filament-fabrication-fff-thumb-600x300.jpg'
    # img = 'images.jpg'
-   # img = 'index.jpg'
+   img = 'index.jpg'
 
 
    image = skimage.io.imread(os.path.join(path, img))
@@ -54,22 +54,44 @@ def image(request):
 
 @api_view(['POST'])
 def show(request):
+    IMG_SIZE = 160
     # from pudb.remote import set_trace; set_trace(term_size=(160, 40), host='0.0.0.0', port=6900)
 
     serializer = FileUploadSerializer(data=request.data)
     serializer.is_valid(raise_exception=True)
     file = request.FILES['file']
 
-    # TODO: save information about probalitity to database?
 
-    fs = FileSystemStorage(location='./../static/uploaded', file_permissions_mode=775)
-    filename = fs.save(file.name, file)
-    uploaded_file_url = fs.url(filename)
+    image = skimage.io.imread(file)
+    image = resize(image, (IMG_SIZE, IMG_SIZE))
+    if image.ndim != 3: # If grayscale. Convert to RGB for consistency.
+       image = skimage.color.gray2rgb(image)
+
+    data = json.dumps({"signature_name": "serving_default", "instances": [image.tolist()]})
+
+    headers = {"content-type": "application/json"}
+    json_response = requests.post('http://tensorflow-serving:8501/v1/models/half_plus_two:predict', data=data, headers=headers)
+    predictions = json.loads(json_response.text)['predictions']
+    predictions = round(predictions[0][0] * 100, 2)
+
+    if predictions > 90:
+        msg = 'Seems to failed'
+        folder = 'failed'
+    elif predictions < 1:
+        msg = 'Seems to be ok'
+        folder = 'good'
+    else:
+        msg = 'Hard to say'
+        folder = 'dont_know'
+
+   #  fs = FileSystemStorage(location='./../static/uploaded', file_permissions_mode=775)
+   #  filename = fs.save(file.name, file)
+   #  uploaded_file_url = fs.url(filename)
 
     return Response({
         'message': 'Success',
-        'probability': '87',
-        # 'aaa': request.data,
+        'probability': predictions,
         'res': serializer.data,
-        'uploaded_file_url': uploaded_file_url
+        'msg' : msg,
+      #   'uploaded_file_url': uploaded_file_url
     })
