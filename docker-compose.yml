@@ -20,6 +20,22 @@ services:
         networks:
             - network
 
+    tensorflow-serving:
+        image: tensorflow/serving:latest
+        container_name: ${PROJECT}_${ENV}_tf_serving
+        volumes:
+            - ./models/tf_serving:/models/half_plus_two
+        ports:
+            - 127.0.0.1:8500:8500
+            - 127.0.0.1:8501:8501
+        environment:
+            MODEL_NAME: "half_plus_two"
+            # MODEL_BASE_PATH: "/models/tf_serving"
+        networks:
+            - network
+        logging:
+            driver: json-file
+
     python:
         build: python 
         command: sh -c "python manage.py makemigrations && python manage.py migrate && gunicorn api.wsgi -b 0.0.0.0:8000 --reload --workers 3 -t 3600"
@@ -33,13 +49,16 @@ services:
         working_dir: /app/api
         links:
             - db
+            - tensorflow-serving
         logging:
             driver: json-file
         networks:
             - network
         environment:
             APP_ENV: ${ENV}
+    
 
+        
     web:
         build: nginx
         container_name: ${PROJECT}_${ENV}_web
