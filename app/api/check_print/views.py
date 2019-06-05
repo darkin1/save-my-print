@@ -49,7 +49,7 @@ def image(request):
    return Response({
        'message': 'ok',
        'prediction': predictions,
-       'aaa': os.getenv("APPX")
+       'aaa': os.getenv("APP_URL")
    })
 
 
