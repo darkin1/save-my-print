@@ -19,6 +19,10 @@
 
 	<link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,700|Rationale" rel="stylesheet">
 
+	<script>
+		var ENV = "{{ ENV }}"		
+		var API_URL = "{{ API_URL }}"
+	</script>
 
 	<!-- Global site tag (gtag.js) - Google Analytics -->
 	<script async src="https://www.googletagmanager.com/gtag/js?id=UA-141551254-1"></script>
@@ -234,7 +238,6 @@
 </script>
 
 <script type="text/javascript">
-var API_URL = "{{ API_URL }}"
 
 $(document).ready(function() {
   $.uploadPreview({

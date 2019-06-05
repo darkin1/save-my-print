@@ -5,7 +5,10 @@ import os
 
 
 def show(request):
-    return render(request, 'landing/show.html', context={'API_URL': os.getenv('API_URL')})
+    return render(request, 'landing/show.html', context={
+        'ENV': os.getenv('ENV'),
+        'API_URL': os.getenv('API_URL') 
+    })
 
 
 def privacy(request):
