@@ -15,14 +15,8 @@ production:
     # - ssh-keyscan -H 'your.server.hostname' >> ~/.ssh/known_hosts
     - chmod 700 $HOME/.ssh/id_rsa
     - ssh -i $HOME/.ssh/id_rsa root@192.99.151.132 '( cd $HOME/savemyprint/webapp; git pull )'
-    # - ssh -i $HOME/.ssh/id_rsa root@192.99.151.132 'echo $CI_COMMIT_SHA'
-    # - ssh -vT 192.99.151.132 -i $HOME/.ssh/id_rsa
     # - rsync -avuz -e 'ssh -i $HOME/.ssh/id_rsa' $CI_PROJECT_DIR/ root@192.99.151.132:$HOME/savemyprint-gitlab/$CI_COMMIT_SHA
-    # - echo $CI_COMMIT_SHA/
-    # - ssh -i $HOME/.ssh/id_rsa root@192.99.151.132 '( cd $HOME/savemyprint-gitlab;  "${CI_COMMIT_SHA}"/  )'
-    # - ssh -i $HOME/.ssh/id_rsa root@192.99.151.132 '( cd $HOME/savemyprint-gitlab;  "$CI_COMMIT_SHA"/  )'
-    # - ssh -i $HOME/.ssh/id_rsa root@192.99.151.132 '( cd $HOME/savemyprint-gitlab;  $CI_COMMIT_SHA/  )'
-    # - ssh -i $HOME/.ssh/id_rsa root@192.99.151.132 '( cd $HOME/savemyprint-gitlab;  ${CI_COMMIT_SHA}/  )'
     # - ssh -i $HOME/.ssh/id_rsa root@192.99.151.132 '( cd $HOME/savemyprint-gitlab; rsync -rlch --progress --stats --delete --exclude 'app/static/uploaded' $CI_COMMIT_SHA/ webapp/ )'
+    # - For more details visit teamrock repositories (master and develop)
   only:
     - master   
