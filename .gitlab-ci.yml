@@ -7,7 +7,6 @@ stages:
 production:
   stage: production
   script:
-    - ls -la
     - 'which ssh-agent || ( apk add --no-cache  openssh-client rsync )'
     - eval $(ssh-agent -s)
     - mkdir -p /root/.ssh
@@ -15,7 +14,6 @@ production:
     - echo $SSH_HOST_KEY > /root/.ssh/known_hosts
     # - ssh-keyscan -H 'your.server.hostname' >> ~/.ssh/known_hosts
     - chmod 700 /root/.ssh/id_rsa
-    - ls -la /root/.ssh/id_rsa
     # - ssh -vT 192.99.151.132 -i /root/.ssh/id_rsa
     - rsync -avuz -e 'ssh -i /root/.ssh/id_rsa' $CI_PROJECT_DIR/ root@192.99.151.132:~/savemyprint-gitlab
   only:
