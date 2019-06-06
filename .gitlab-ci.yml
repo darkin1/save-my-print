@@ -15,7 +15,7 @@ production:
     - echo $SSH_HOST_KEY > /root/.ssh/known_hosts
     - chmod 700 /root/.ssh/id_rsa
     - ls -la /root/.ssh/id_rsa
-    # - ssh -v 192.99.151.132 -i /root/.ssh/id_rsa
-    - rsync -avuz -e 'ssh -i /root/.ssh/id_rsa' $CI_PROJECT_DIR/ root@192.99.151.132:~/savemyprint-gitlab
+    - ssh -vT 192.99.151.132 -i /root/.ssh/id_rsa
+    # - rsync -avuz -e 'ssh -i /root/.ssh/id_rsa' $CI_PROJECT_DIR/ root@192.99.151.132:~/savemyprint-gitlab
   only:
     - master   
