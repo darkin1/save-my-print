@@ -14,7 +14,6 @@ production:
     - echo $SSH_PRIVATE_KEY > /root/.ssh/id_rsa
     - chmod 400 /root/.ssh/id_rsa
     - ls -la /root/.ssh/id_rsa
-    - cat /root/.ssh/id_rsa
     - ssh -v 192.99.151.132
     - rsync -avuz -e 'ssh -i /root/.ssh/id_rsa' $CI_PROJECT_DIR/ root@192.99.151.132:~/savemyprint-gitlab
   only:
