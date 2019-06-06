@@ -8,11 +8,10 @@ production:
   stage: production
   script:
     - ls -la
-    - 'which ssh-agent || ( apk add --no-cache  openssh-client -y )'
+    - 'which ssh-agent || ( apk add --no-cache  openssh-client )'
     - eval $(ssh-agent -s)
-    - echo $SSH_PRIVATE_KEY > ~/id_rsa
-    - ssh-add < ~/id_rsa
     - mkdir -p ~/.ssh
+    - echo $SSH_PRIVATE_KEY > ~/.ssh/id_rsa
     - rsync -avuz -e 'ssh -i ~/.ssh/id_rsa' $CI_PROJECT_DIR/ root@192.99.151.132:~/savemyprint-gitlab
   only:
     - master   
