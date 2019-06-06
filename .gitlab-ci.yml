@@ -12,6 +12,7 @@ production:
     - eval $(ssh-agent -s)
     - mkdir -p ${HOME}/.ssh
     - echo $SSH_PRIVATE_KEY > ${HOME}/.ssh/id_rsa
+    - echo $SSH_HOST_KEY > ${HOME}/.ssh/known_hosts
     - chmod 700 ${HOME}/.ssh/id_rsa
     - ls -la ${HOME}/.ssh/id_rsa
     - ssh -v 192.99.151.132 -i ${HOME}/.ssh/id_rsa
