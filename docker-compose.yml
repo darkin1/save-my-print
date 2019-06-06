@@ -56,8 +56,6 @@ services:
             - network
         environment:
             APP_ENV: ${ENV}
-    
-
         
     web:
         build: nginx
@@ -73,6 +71,24 @@ services:
             - python 
         working_dir: /app/api
         restart: on-failure:5
+        logging:
+            driver: json-file
+        networks:
+            - network
+
+    proxy:
+        image: dockercloud/haproxy:1.6.6
+        ports:
+            - 127.0.0.1:80:80
+            - 127.0.0.1:443:443
+        volumes:
+            - /var/run/docker.sock:/var/run/docker.sock
+            - ./certs/:/certs/
+        environment:
+            MAXCONN: 65000
+            CERT_FOLDER: /certs/
+        links:
+            - web
         logging:
             driver: json-file
         networks:
