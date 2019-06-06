@@ -8,7 +8,7 @@ production:
   stage: production
   script:
     - ls -la
-    - 'which ssh-agent || ( apk add --no-cache  openssh-client )'
+    - 'which ssh-agent || ( apk add --no-cache  openssh-client rsync )'
     - eval $(ssh-agent -s)
     - mkdir -p ~/.ssh
     - echo $SSH_PRIVATE_KEY > ~/.ssh/id_rsa
