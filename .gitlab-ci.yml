@@ -11,7 +11,8 @@ production:
     - 'which ssh-agent || ( apk add --no-cache  openssh-client rsync )'
     - eval $(ssh-agent -s)
     - mkdir -p /root/.ssh
-    - echo $SSH_PRIVATE_KEY > /root/.ssh/id_rsa
+    - echo "$SSH_PRIVATE_KEY" | tr -d '\r' > /root/.ssh/id_rsa
+    # - echo $SSH_PRIVATE_KEY > /root/.ssh/id_rsa
     - echo $SSH_HOST_KEY > /root/.ssh/known_hosts
     - chmod 700 /root/.ssh/id_rsa
     - ls -la /root/.ssh/id_rsa
