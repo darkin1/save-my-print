@@ -11,7 +11,7 @@ production:
     - 'which ssh-agent || ( apk add --no-cache  openssh-client -y )'
     - eval $(ssh-agent -s)
     - echo $SSH_PRIVATE_KEY > ~/id_rsa
-    - ssh-add < echo ~/id_rsa
+    - ssh-add < ~/id_rsa
     - mkdir -p ~/.ssh
     - rsync -avuz -e 'ssh -i ~/.ssh/id_rsa' $CI_PROJECT_DIR/ root@192.99.151.132:~/savemyprint-gitlab
   only:
