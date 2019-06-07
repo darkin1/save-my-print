@@ -56,10 +56,10 @@ services:
             - network
         environment:
             APP_ENV: ${ENV}
-        
+
     web:
         build: nginx
-        container_name: ${PROJECT}_${ENV}_web
+        # container_name: webapp
         # ports:
         #    - ${IP}:80:80
         environment:
@@ -78,17 +78,24 @@ services:
 
     proxy:
         image: dockercloud/haproxy:1.6.6
-        ports:
-            - 80:80
-            - 443:443
-        volumes:
-            - /var/run/docker.sock:/var/run/docker.sock
-            - ./certs/:/certs/
-        environment:
-            MAXCONN: 65000
-            CERT_FOLDER: /certs/
+        container_name: ${PROJECT}_${ENV}_proxy
+        depends_on:
+            - web
         links:
             - web
+        ports:
+            - 80:80
+            # - 1936:1936
+            # - 443:443
+        volumes:
+            - /var/run/docker.sock:/var/run/docker.sock
+            # - ./certs/:/certs/
+        environment:
+            MAXCONN: 65000
+            # ADDITIONAL_SERVICES: savemyprint_backend_local_web:web
+            # ADDITIONAL_SERVICES: web:web
+            # STATS_AUTH: 'admin:admin'
+            # CERT_FOLDER: /certs/
         logging:
             driver: json-file
         networks:
