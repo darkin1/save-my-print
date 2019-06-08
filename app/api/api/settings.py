@@ -26,7 +26,7 @@ SECRET_KEY = 'j!w5e3g-gy!5lhhtyp+yyxwkib-^jum7p^6_@l70+og@vc+wu@'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = [os.getenv("APP_URL"), os.getenv("API_URL")]
+ALLOWED_HOSTS = [os.getenv("APP_URL"), os.getenv("APP_URL_NON"), os.getenv("API_URL")]
 
 AUTH_USER_MODEL = 'users.CustomUser'
 
