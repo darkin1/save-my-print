@@ -125,8 +125,12 @@ CORS_ORIGIN_ALLOW_ALL = False
 CORS_ORIGIN_WHITELIST = [
     "http://api.savemyprint.local",
     "http://www.savemyprint.local",
+    "https://api.savemyprint.local",
+    "https://www.savemyprint.local",
     "http://api.savemyprint.com",
     "http://www.savemyprint.com",
+    "https://api.savemyprint.com",
+    "https://www.savemyprint.com",
     # 'http://' + os.getenv('API_URL'),
     # 'http://' + os.getenv('APP_URL')
 ]
