@@ -124,13 +124,17 @@ AUTH_PASSWORD_VALIDATORS = [
 CORS_ORIGIN_ALLOW_ALL = False
 CORS_ORIGIN_WHITELIST = [
     "http://api.savemyprint.local",
-    "http://www.savemyprint.local",
-    "https://api.savemyprint.local",
-    "https://www.savemyprint.local",
     "http://api.savemyprint.com",
-    "http://www.savemyprint.com",
+    "https://api.savemyprint.local",
     "https://api.savemyprint.com",
+    "http://www.savemyprint.local",
+    "https://www.savemyprint.local",
+    "http://www.savemyprint.com",
     "https://www.savemyprint.com",
+    "http://savemyprint.local",
+    "http://savemyprint.com",
+    "https://savemyprint.local",
+    "https://savemyprint.com",
     # 'http://' + os.getenv('API_URL'),
     # 'http://' + os.getenv('APP_URL')
 ]
