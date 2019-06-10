@@ -62,7 +62,7 @@ MIDDLEWARE = [
 ROOT_URLCONF = 'api.urls'
 
 ROOT_HOSTCONF = 'api.hosts'
-DEFAULT_HOST = 'api'
+DEFAULT_HOST = 'www'
 
 TEMPLATES = [
     {
