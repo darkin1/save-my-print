@@ -43,7 +43,7 @@ def image(request):
    data = json.dumps({"signature_name": "serving_default", "instances": [image.tolist()]})
 
    headers = {"content-type": "application/json"}
-   json_response = requests.post('//tensorflow-serving:8501/v1/models/half_plus_two:predict', data=data, headers=headers)
+   json_response = requests.post('http://tensorflow-serving:8501/v1/models/half_plus_two:predict', data=data, headers=headers)
    predictions = json.loads(json_response.text)['predictions']
 
    return Response({
@@ -71,7 +71,7 @@ def show(request):
     data = json.dumps({"signature_name": "serving_default", "instances": [image.tolist()]})
 
     headers = {"content-type": "application/json"}
-    json_response = requests.post('//tensorflow-serving:8501/v1/models/half_plus_two:predict', data=data, headers=headers)
+    json_response = requests.post('http://tensorflow-serving:8501/v1/models/half_plus_two:predict', data=data, headers=headers)
     predictions = json.loads(json_response.text)['predictions']
     predictions = round(predictions[0][0] * 100, 2)
 
