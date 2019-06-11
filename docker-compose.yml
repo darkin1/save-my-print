@@ -64,6 +64,7 @@ services:
         #    - ${IP}:80:80
         environment:
             VIRTUAL_HOST: ${VIRTUAL_HOST}
+            FORCE_SSL: 'true'
         volumes:
             - ./vhosts/:/etc/nginx/conf.d/
             - ./app/:/app
@@ -96,7 +97,6 @@ services:
             # ADDITIONAL_SERVICES: web:web
             # STATS_AUTH: 'admin:admin'
             CERT_FOLDER: /certs/
-            # FORCE_SSL: 'true'
         logging:
             driver: json-file
         networks:
