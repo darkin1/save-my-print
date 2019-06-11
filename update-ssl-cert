@@ -1,0 +1,16 @@
+#!/bin/bash
+
+#/root/certbot-auto renew --dry-run
+# /root/certbot-auto renew --quiet --no-self-upgrade
+certbot renew --quiet --no-self-upgrade
+
+letsencrypt=/etc/letsencrypt/live
+app=$letsencrypt/savemyprint.com
+cert=/root/savemyprint/webapp/certs/cert.pem
+
+cat $app/privkey.pem $app/cert.pem $app/fullchain.pem > $cert
+
+# To create cerificate
+# https://certbot.eff.org/lets-encrypt/ubuntubionic-haproxy
+# stop web server and proxy
+# certbot certonly --standalone --preferred-challenges http -d savemyprint.com -d www.savemyprint.com -d api.savemyprint.com
