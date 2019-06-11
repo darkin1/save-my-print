@@ -47,7 +47,7 @@ data = json.dumps({"signature_name": "serving_default", "instances": [image.toli
 
 
 headers = {"content-type": "application/json"}
-json_response = requests.post('http://localhost:8501/v1/models/half_plus_two:predict', data=data, headers=headers)
+json_response = requests.post('//localhost:8501/v1/models/half_plus_two:predict', data=data, headers=headers)
 # predictions = json.loads(json_response.text)['predictions']
 predictions = json.loads(json_response.text)
 

@@ -41,7 +41,7 @@
 		}
 	</style>
 
-	<script type="text/javascript" src="http://code.jquery.com/jquery-2.0.3.min.js"></script>
+	<script type="text/javascript" src="//code.jquery.com/jquery-2.0.3.min.js"></script>
 	<script type="text/javascript" src="/static/jquery.uploadPreview.js"></script>
 </head>
 
@@ -258,7 +258,7 @@ $(document).ready(function() {
 
 			$.ajax({
 				type: "POST",
-				url: 'http://' + API_URL  + '/check_print/show',
+				url: '//' + API_URL  + '/check_print/show',
 				data: formData,
 				contentType: false,
 				processData: false,
